@@ -9,40 +9,60 @@ class Solution{
         //Function to merge the arrays.
         void merge(long long arr1[], long long arr2[], int n, int m) 
         { 
-            // code here 
-            int arr[n+m];
-            int left=0;
-            int right=0;
-            int index=0;
+            // brute-force approach : 
             
-            while(left<n && right<m)
+            // int arr[n+m];
+            // int left=0;
+            // int right=0;
+            // int index=0;
+            
+            // while(left<n && right<m)
+            // {
+            //     if(arr1[left]<=arr2[right])
+            //     {
+            //         arr[index] = arr1[left];
+            //         left++;
+            //         index++;
+            //     }
+            //     else
+            //     {
+            //         arr[index]=arr2[right];
+            //         right++;
+            //         index++;
+            //     }
+            // }
+            // while(left<n)
+            //   arr[index++]=arr1[left++];
+            
+            // while(right<m)
+            //   arr[index++]=arr2[right++];
+               
+            // for(int i=0;i<n+m;i++)
+            // {
+            //     if(i<n)
+            //       arr1[i]=arr[i];
+            //     else 
+            //       arr2[i-n]=arr[i];
+            // }
+            
+            // Optimal Approach : 
+            
+            int left = n-1;
+            int right = 0;
+            while(left>=0 && right<m)
             {
-                if(arr1[left]<=arr2[right])
+                if(arr1[left]>arr2[right])
                 {
-                    arr[index] = arr1[left];
-                    left++;
-                    index++;
+                    swap(arr1[left],arr2[right]);
+                    left--;
+                    right++;
                 }
                 else
-                {
-                    arr[index]=arr2[right];
-                    right++;
-                    index++;
-                }
+                  break;
             }
-            while(left<n)
-               arr[index++]=arr1[left++];
             
-            while(right<m)
-               arr[index++]=arr2[right++];
-               
-            for(int i=0;i<n+m;i++)
-            {
-                if(i<n)
-                  arr1[i]=arr[i];
-                else 
-                  arr2[i-n]=arr[i];
-            }
+            sort(arr1,arr1+n);
+            sort(arr2,arr2+m);
         } 
 };
 
