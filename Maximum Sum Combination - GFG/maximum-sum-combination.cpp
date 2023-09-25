@@ -49,7 +49,7 @@ class Solution {
             
             ans.push_back(sum);
             
-            if(s.find({x-1,y})==s.end())
+            if(s.find({x-1,y})==s.end())   // if not present in the set
             {
                 pq.push({A[x-1]+B[y],{x-1,y}});
                 s.insert({x-1,y});
